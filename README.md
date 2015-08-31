@@ -11,7 +11,7 @@ It is a direct port of the amazing [react workflow](https://github.com/cesarandr
 * Heavily commented webpack configuration with reasonable defaults.
 * ES6, and ES7 support with babel.js.
 * Source maps included in all builds.
-* Development server with hot reload when possible and refresh otherwise.
+* Development server with live reload.
 * Production builds with cache busting and asset minification.
 * Testing environment using karma to run tests and jasmine as the framework.
 * Code coverage when tests are run.
