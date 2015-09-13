@@ -2,7 +2,7 @@
 
 // Modules
 var webpack = require('webpack');
-var autoprefixer = require('autoprefixer-core');
+var autoprefixer = require('autoprefixer');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
 
