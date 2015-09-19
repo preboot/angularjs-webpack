@@ -4,7 +4,7 @@
   "description": "A workflow for Angular made with Webpack",
   "scripts": {
     "build": "webpack --config webpack.build.js --bail -p",
-    "dev": "webpack-dev-server --history-api-fallback --hot --inline --progress",
+    "dev": "webpack-dev-server --history-api-fallback --inline --progress",
     "test": "karma start",
     "test:live": "karma start --auto-watch --no-single-run"
   },
