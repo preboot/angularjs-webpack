@@ -185,8 +185,7 @@ module.exports = function makeWebpackConfig (options) {
     config.plugins.push(
       new HtmlWebpackPlugin({
         template: './src/index.html',
-        inject: 'body',
-        minify: BUILD
+        inject: 'body'
       })
     )
   }
