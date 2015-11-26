@@ -31,7 +31,7 @@
     "extract-text-webpack-plugin": "^0.8.2",
     "file-loader": "^0.8.4",
     "html-webpack-plugin": "^1.6.2",
-    "isparta-instrumenter-loader": "^0.2.1",
+    "isparta-instrumenter-loader": "^1.0.0",
     "jasmine-core": "^2.3.4",
     "karma": "^0.13.14",
     "karma-coverage": "^0.5.3",
