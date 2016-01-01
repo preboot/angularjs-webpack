@@ -19,10 +19,10 @@
   },
   "homepage": "https://github.com/Foxandxss/angular-webpack-workflow",
   "dependencies": {
-    "angular": "^1.4.7"
+    "angular": "^1.4.8"
   },
   "devDependencies": {
-    "angular-mocks": "^1.4.7",
+    "angular-mocks": "^1.4.8",
     "autoprefixer": "^6.0.3",
     "babel-core": "^6.2.1",
     "babel-loader": "^6.2.0",
