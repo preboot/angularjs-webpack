@@ -139,7 +139,7 @@ module.exports = function makeWebpackConfig (options) {
     // Extract css files in production builds
     //
     // Reference: https://github.com/webpack/style-loader
-    // Use style-loader in development for hot-loading
+    // Use style-loader in development.
     loader: ExtractTextPlugin.extract('style', 'css?sourceMap!postcss')
   };
 
