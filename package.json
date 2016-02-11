@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "A workflow for Angular made with Webpack",
   "scripts": {
-    "build": "webpack --config webpack.build.js --bail",
+    "build": "rimraf public && webpack --config webpack.build.js --bail",
     "server": "webpack-dev-server --history-api-fallback --inline --progress",
     "test": "karma start",
     "test-watch": "karma start --auto-watch --no-single-run",
@@ -46,6 +46,7 @@
     "phantomjs": "^2.1.3",
     "postcss-loader": "^0.8.0",
     "raw-loader": "^0.5.1",
+    "rimraf": "^2.5.1",
     "style-loader": "^0.13.0",
     "webpack": "^1.12.2",
     "webpack-dev-server": "^1.12.1"
