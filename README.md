@@ -1,10 +1,12 @@
-# Angular 1.x WebPack + Babel workflow
+# Angular 1.x WebPack 2 + Babel workflow
 
 [![Dependency Status](https://david-dm.org/Foxandxss/angular-webpack-workflow/status.svg)](https://david-dm.org/Foxandxss/angular-webpack-workflow#info=dependencies) [![devDependency Status](https://david-dm.org/Foxandxss/angular-webpack-workflow/dev-status.svg)](https://david-dm.org/Foxandxss/angular-webpack-workflow#info=devDependencies)
 
-This workflow serves as a starting point for building Angular 1.x applications using WebPack. Should be noted that apart from the pre-installed angular package, this workflow is pretty much generic.
+**NOTE: This workflow is now using Webpack 2 beta. There is a branch with the old workflow if you want to use it.**
 
-It is a direct port of the amazing [react workflow](https://github.com/cesarandreu/web-app) of [Cesar Andreu](https://github.com/cesarandreu). All the credits goes for him.
+**NOTE 2: THIS IS STILL WIP, I WILL REMOVE THIS CAPS WHEN I AM SURE IT WORKS PERFECTLY.**
+
+This workflow serves as a starting point for building Angular 1.x applications using WebPack 2. Should be noted that apart from the pre-installed angular package, this workflow is pretty much generic.
 
 ## Features
 
