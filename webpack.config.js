@@ -6,15 +6,7 @@ var autoprefixer = require('autoprefixer');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
 
-module.exports = function makeWebpackConfig (options) {
-  /**
-   * Environment type
-   * BUILD is for generating minified builds
-   * TEST is for generating test builds
-   */
-  var BUILD = !!options.BUILD;
-  var TEST = !!options.TEST;
-
+module.exports = function makeWebpackConfig (ENV) {
   /**
    * Config
    * Reference: http://webpack.github.io/docs/configuration.html
@@ -28,13 +20,9 @@ module.exports = function makeWebpackConfig (options) {
    * Should be an empty object if it's generating a test build
    * Karma will set this when it's a test build
    */
-  if (TEST) {
-    config.entry = {}
-  } else {
-    config.entry = {
-      app: './src/app.js'
-    }
-  }
+  config.entry = ENV === 'test' ? {} : {
+    app: './src/app.js'
+  };
 
   /**
    * Output
@@ -42,38 +30,34 @@ module.exports = function makeWebpackConfig (options) {
    * Should be an empty object if it's generating a test build
    * Karma will handle setting it up for you when it's a test build
    */
-  if (TEST) {
-    config.output = {}
-  } else {
-    config.output = {
-      // Absolute output directory
-      path: __dirname + '/public',
+  config.output = ENV === 'test' ? {} : {
+    // Absolute output directory
+    path: __dirname + '/public',
 
-      // Output path from the view of the page
-      // Uses webpack-dev-server in development
-      publicPath: BUILD ? '/' : 'http://localhost:8080/',
+    // Output path from the view of the page
+    // Uses webpack-dev-server in development
+    publicPath: ENV === 'prod' ? '/' : 'http://localhost:8080/',
 
-      // Filename for entry points
-      // Only adds hash in build mode
-      filename: BUILD ? '[name].[hash].js' : '[name].bundle.js',
+    // Filename for entry points
+    // Only adds hash in build mode
+    filename: ENV === 'prod' ? '[name].[hash].js' : '[name].bundle.js',
 
-      // Filename for non-entry points
-      // Only adds hash in build mode
-      chunkFilename: BUILD ? '[name].[hash].js' : '[name].bundle.js'
-    }
-  }
+    // Filename for non-entry points
+    // Only adds hash in build mode
+    chunkFilename: ENV === 'prod' ? '[name].[hash].js' : '[name].bundle.js'
+  };
 
   /**
    * Devtool
    * Reference: http://webpack.github.io/docs/configuration.html#devtool
    * Type of sourcemap to use per build type
    */
-  if (TEST) {
+  if (ENV === 'test') {
     config.devtool = 'inline-source-map';
-  } else if (BUILD) {
+  } else if (ENV === 'prod') {
     config.devtool = 'source-map';
   } else {
-    config.devtool = 'eval';
+    config.devtool = 'eval-source-map';
   }
 
   /**
@@ -94,6 +78,20 @@ module.exports = function makeWebpackConfig (options) {
       test: /\.js$/,
       loader: 'babel',
       exclude: /node_modules/
+    }, {
+      // CSS LOADER
+      // Reference: https://github.com/webpack/css-loader
+      // Allow loading css through js
+      //
+      // Reference: https://github.com/postcss/postcss-loader
+      // Postprocess your css with PostCSS plugins
+      test: /\.css$/,
+      // Reference: https://github.com/webpack/extract-text-webpack-plugin
+      // Extract css files in production builds
+      //
+      // Reference: https://github.com/webpack/style-loader
+      // Use style-loader in development.
+      loader: ENV === 'test' ? 'null' : ExtractTextPlugin.extract('style', 'css?sourceMap!postcss')
     }, {
       // ASSET LOADER
       // Reference: https://github.com/webpack/file-loader
@@ -116,42 +114,16 @@ module.exports = function makeWebpackConfig (options) {
   // Reference: https://github.com/ColCh/isparta-instrumenter-loader
   // Instrument JS files with Isparta for subsequent code coverage reporting
   // Skips node_modules and files that end with .test.js
-  if (TEST) {
+  if (ENV === 'test') {
     config.module.preLoaders.push({
       test: /\.js$/,
       exclude: [
         /node_modules/,
-        /\.test\.js$/
+        /\.spec\.js$/
       ],
       loader: 'isparta-instrumenter'
     })
   }
-
-  // CSS LOADER
-  // Reference: https://github.com/webpack/css-loader
-  // Allow loading css through js
-  //
-  // Reference: https://github.com/postcss/postcss-loader
-  // Postprocess your css with PostCSS plugins
-  var cssLoader = {
-    test: /\.css$/,
-    // Reference: https://github.com/webpack/extract-text-webpack-plugin
-    // Extract css files in production builds
-    //
-    // Reference: https://github.com/webpack/style-loader
-    // Use style-loader in development.
-    loader: ExtractTextPlugin.extract('style', 'css?sourceMap!postcss')
-  };
-
-  // Skip loading css in test mode
-  if (TEST) {
-    // Reference: https://github.com/webpack/null-loader
-    // Return an empty module
-    cssLoader.loader = 'null'
-  }
-
-  // Add cssLoader to the loader list
-  config.module.loaders.push(cssLoader);
 
   /**
    * PostCSS
@@ -169,29 +141,26 @@ module.exports = function makeWebpackConfig (options) {
    * Reference: http://webpack.github.io/docs/configuration.html#plugins
    * List: http://webpack.github.io/docs/list-of-plugins.html
    */
-  config.plugins = [
-    // Reference: https://github.com/webpack/extract-text-webpack-plugin
-    // Extract css files
-    // Disabled when in test mode or not in build mode
-    new ExtractTextPlugin('[name].[hash].css', {
-      disable: !BUILD || TEST
-    })
-  ];
+  config.plugins = [];
 
   // Skip rendering index.html in test mode
-  if (!TEST) {
+  if (ENV !== 'test') {
     // Reference: https://github.com/ampedandwired/html-webpack-plugin
     // Render index.html
     config.plugins.push(
       new HtmlWebpackPlugin({
         template: './src/index.html',
         inject: 'body'
-      })
+      }),
+      // Reference: https://github.com/webpack/extract-text-webpack-plugin
+      // Extract css files
+      // Disabled when in test mode or not in build mode
+      new ExtractTextPlugin('css/[name].css', {disable: ENV !== 'prod'})
     )
   }
 
   // Add build specific plugins
-  if (BUILD) {
+  if (ENV === 'prod') {
     config.plugins.push(
       // Reference: http://webpack.github.io/docs/list-of-plugins.html#noerrorsplugin
       // Only emit files when there are no errors
