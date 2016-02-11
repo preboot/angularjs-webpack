@@ -9,13 +9,13 @@ It is a direct port of the amazing [react workflow](https://github.com/cesarandr
 ## Features
 
 * Heavily commented webpack configuration with reasonable defaults.
-* ES6, and ES7 support with babel.js.
+* ES6, and ES7 support with babel.
 * Source maps included in all builds.
 * Development server with live reload.
 * Production builds with cache busting and asset minification.
 * Testing environment using karma to run tests and jasmine as the framework.
 * Code coverage when tests are run.
-* No gulp and no grunt, just npm run-scripts.
+* No gulp and no grunt, just npm scripts.
 
 ## Installation
 
