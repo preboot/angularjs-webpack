@@ -1,12 +1,10 @@
-# Angular 1.x WebPack 2 + Babel workflow
+# Angular 1.x Webpack 2 + Babel workflow
 
 [![Dependency Status](https://david-dm.org/Foxandxss/angular-webpack-workflow/status.svg)](https://david-dm.org/Foxandxss/angular-webpack-workflow#info=dependencies) [![devDependency Status](https://david-dm.org/Foxandxss/angular-webpack-workflow/dev-status.svg)](https://david-dm.org/Foxandxss/angular-webpack-workflow#info=devDependencies)
 
 **NOTE: This workflow is now using Webpack 2 beta. There is a branch with the old workflow if you want to use it.**
 
-**NOTE 2: THIS IS STILL WIP, I WILL REMOVE THIS CAPS WHEN I AM SURE IT WORKS PERFECTLY.**
-
-This workflow serves as a starting point for building Angular 1.x applications using WebPack 2. Should be noted that apart from the pre-installed angular package, this workflow is pretty much generic.
+This workflow serves as a starting point for building Angular 1.x applications using Webpack 2. Should be noted that apart from the pre-installed angular package, this workflow is pretty much generic.
 
 ## Features
 
@@ -31,7 +29,7 @@ $ npm install
 
 ## Scripts
 
-All scripts are run with `npm run [script]`, for example: `npm run test`.
+All scripts are run with `npm run [script]`, for example: `npm run build`.
 
 * `build` - generate a minified build to dist folder
 * `start` - start development server, try it by opening `http://localhost:8080/`

@@ -22,7 +22,7 @@ module.exports = function makeWebpackConfig (ENV) {
    * Karma will set this when it's a test build
    */
   config.entry = ENV === 'test' ? {} : {
-    app: './src/app.js'
+    app: './src/app/app.js'
   };
 
   /**
@@ -33,7 +33,7 @@ module.exports = function makeWebpackConfig (ENV) {
    */
   config.output = ENV === 'test' ? {} : {
     // Absolute output directory
-    path: __dirname + '/public',
+    path: __dirname + '/dist',
 
     // Output path from the view of the page
     // Uses webpack-dev-server in development
@@ -157,7 +157,7 @@ module.exports = function makeWebpackConfig (ENV) {
       // Reference: https://github.com/webpack/extract-text-webpack-plugin
       // Extract css files
       // Disabled when in test mode or not in build mode
-      new ExtractTextPlugin('css/[name].css', {disable: ENV !== 'prod'})
+      new ExtractTextPlugin('[name].[hash].css', {disable: ENV !== 'prod'})
     )
   }
 
