@@ -14,7 +14,7 @@ This workflow serves as a starting point for building Angular 1.x applications u
 * ES6, and ES7 support with babel.
 * Source maps included in all builds.
 * Development server with live reload.
-* Production builds with cache busting and asset minification.
+* Production builds with cache busting.
 * Testing environment using karma to run tests and jasmine as the framework.
 * Code coverage when tests are run.
 * No gulp and no grunt, just npm scripts.
