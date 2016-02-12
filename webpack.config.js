@@ -5,6 +5,7 @@ var webpack = require('webpack');
 var autoprefixer = require('autoprefixer');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
+var CopyWebpackPlugin = require('copy-webpack-plugin');
 
 module.exports = function makeWebpackConfig (ENV) {
   /**
@@ -149,9 +150,10 @@ module.exports = function makeWebpackConfig (ENV) {
     // Render index.html
     config.plugins.push(
       new HtmlWebpackPlugin({
-        template: './src/index.html',
+        template: './src/public/index.html',
         inject: 'body'
       }),
+
       // Reference: https://github.com/webpack/extract-text-webpack-plugin
       // Extract css files
       // Disabled when in test mode or not in build mode
@@ -172,7 +174,13 @@ module.exports = function makeWebpackConfig (ENV) {
 
       // Reference: http://webpack.github.io/docs/list-of-plugins.html#uglifyjsplugin
       // Minify all javascript, switch loaders to minimizing mode
-      new webpack.optimize.UglifyJsPlugin()
+      new webpack.optimize.UglifyJsPlugin(),
+
+      // Copy assets from the public folder
+      // Reference: https://github.com/kevlened/copy-webpack-plugin
+      new CopyWebpackPlugin([{
+        from: __dirname + '/src/public'
+      }])
     )
   }
 
@@ -182,7 +190,7 @@ module.exports = function makeWebpackConfig (ENV) {
    * Reference: http://webpack.github.io/docs/webpack-dev-server.html
    */
   config.devServer = {
-    contentBase: './public',
+    contentBase: './src/public',
     stats: {
       modules: false,
       cached: false,
