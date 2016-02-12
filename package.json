@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "A workflow for Angular made with Webpack",
   "scripts": {
-    "build": "rimraf public && webpack --env prod --bail",
+    "build": "rimraf public && webpack --env prod --bail --progress --profile",
     "server": "webpack-dev-server --env dev --history-api-fallback --inline --progress",
     "test": "karma start --env test",
     "test-watch": "karma start -env test --auto-watch --no-single-run",
