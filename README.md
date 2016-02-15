@@ -1,12 +1,12 @@
-# Angular 1.x Webpack 2 + Babel workflow
+# angular-webpack
 
-[![Dependency Status](https://david-dm.org/Foxandxss/angular-webpack-workflow/status.svg)](https://david-dm.org/Foxandxss/angular-webpack-workflow#info=dependencies) [![devDependency Status](https://david-dm.org/Foxandxss/angular-webpack-workflow/dev-status.svg)](https://david-dm.org/Foxandxss/angular-webpack-workflow#info=devDependencies)
+[![Dependency Status](https://david-dm.org/preboot/angular-webpack/status.svg)](https://david-dm.org/preboot/angular-webpack#info=dependencies) [![devDependency Status](https://david-dm.org/preboot/angular-webpack/dev-status.svg)](https://david-dm.org/preboot/angular-webpack#info=devDependencies)
+
+A complete, yet simple, starter for Angular using webpack 2.
 
 **NOTE: This workflow is now using Webpack 2 beta. There is a branch with the old workflow if you want to use it.**
 
 This workflow serves as a starting point for building Angular 1.x applications using Webpack 2. Should be noted that apart from the pre-installed angular package, this workflow is pretty much generic.
-
-## Features
 
 * Heavily commented webpack configuration with reasonable defaults.
 * ES6, and ES7 support with babel.
@@ -17,33 +17,76 @@ This workflow serves as a starting point for building Angular 1.x applications u
 * Code coverage when tests are run.
 * No gulp and no grunt, just npm scripts.
 
-## Installation
+>Warning: Make sure you're using the latest version of Node.js and NPM
 
-To use it, just clone this repo and install the npm dependencies:
+[Is Angular 2 Ready Yet?](http://splintercode.github.io/is-angular-2-ready/)
 
-```shell
-$ git clone https://github.com/Foxandxss/angular-webpack-workflow my_app
-$ cd my_app
+### Quick start
+
+> Clone/Download the repo then edit `app.js` inside [`/src/app/app.js`](/src/app/app.js)
+
+```bash
+# clone our repo
+$ git clone https://github.com/preboot/angular-webpack.git my-app
+
+# change directory to your
+$ cd my-app
+
+# install the dependencies with npm
 $ npm install
+
+# start the server
+$ npm start
+```
+go to [http://localhost:8080](http://localhost:8080) in your browser.
+
+# Table of Contents
+
+* [Getting Started](#getting-started)
+    * [Dependencies](#dependencies)
+    * [Installing](#installing)
+    * [Running the app](#running-the-app)
+    * [Developing](#developing)
+    * [Testing](#testing)
+* [License](#license)
+
+# Getting Started
+
+## Dependencies
+
+What you need to run this app:
+* `node` and `npm` (Use [NVM](https://github.com/creationix/nvm))
+* Ensure you're running Node (`v4.1.x`+) and NPM (`2.14.x`+)
+
+## Installing
+
+* `fork` this repo
+* `clone` your fork
+* `npm install` to install all dependencies
+
+## Running the app
+
+After you have installed all dependencies you can now run the app with:
+```bash
+npm start
 ```
 
-## Scripts
+It will start a local server using `webpack-dev-server` which will watch, build (in-memory), and reload for you. The port will be displayed to you as `http://localhost:8080`.
 
-All scripts are run with `npm run [script]`, for example: `npm run build`.
+## Developing
 
-* `build` - generate a minified build to dist folder
-* `start` - start development server, try it by opening `http://localhost:8080/`
-* `test` - run all tests
-* `test-watch` - continuously run unit tests watching for changes
+### Build files
 
-See what each script does by looking at the `scripts` section in [package.json](./package.json).
+* single run: `npm run build`
+* build files and watch: `npm run watch`
 
-## Example and tutorial
+## Testing
 
-To see how to structure an Angular 1.x application using this workflow, please check [this demo](https://github.com/Foxandxss/GermanWords-ng1-webpack).
+#### 1. Unit Tests
 
-Also, there is an article in [angular-tips](http://angular-tips.com/blog/2015/06/using-angular-1-dot-x-with-es6-and-webpack/). The article is based on the Webpack 1 version, but almost everything is applicable here.
+* single run: `npm test`
+* live mode (TDD style): `npm run test-watch`
 
-## License
+# License
 
-The license of this workflow is MIT.
+[MIT](/LICENSE)
