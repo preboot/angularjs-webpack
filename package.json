@@ -3,10 +3,10 @@
   "version": "1.0.0",
   "description": "A workflow for Angular made with Webpack",
   "scripts": {
-    "build": "rimraf public && webpack --env prod --bail --progress --profile",
-    "server": "webpack-dev-server --env dev --history-api-fallback --inline --progress",
-    "test": "karma start --env test",
-    "test-watch": "karma start -env test --auto-watch --no-single-run",
+    "build": "rimraf public && webpack --bail --progress --profile",
+    "server": "webpack-dev-server --history-api-fallback --inline --progress",
+    "test": "karma start",
+    "test-watch": "karma start --auto-watch --no-single-run",
     "start": "npm run server"
   },
   "repository": {
@@ -48,7 +48,7 @@
     "raw-loader": "^0.5.1",
     "rimraf": "^2.5.1",
     "style-loader": "^0.13.0",
-    "webpack": "^2.0.7-beta",
-    "webpack-dev-server": "^2.0.0-beta"
+    "webpack": "^1.12.13",
+    "webpack-dev-server": "^1.14.1"
   }
 }

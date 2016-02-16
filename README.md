@@ -2,11 +2,9 @@
 
 [![Dependency Status](https://david-dm.org/preboot/angular-webpack/status.svg)](https://david-dm.org/preboot/angular-webpack#info=dependencies) [![devDependency Status](https://david-dm.org/preboot/angular-webpack/dev-status.svg)](https://david-dm.org/preboot/angular-webpack#info=devDependencies)
 
-A complete, yet simple, starter for Angular using webpack 2.
+A complete, yet simple, starter for Angular using Webpack.
 
-**NOTE: This workflow is now using Webpack 2 beta. There is a branch with the old workflow if you want to use it.**
-
-This workflow serves as a starting point for building Angular 1.x applications using Webpack 2. Should be noted that apart from the pre-installed angular package, this workflow is pretty much generic.
+This workflow serves as a starting point for building Angular 1.x applications using Webpack. Should be noted that apart from the pre-installed angular package, this workflow is pretty much generic.
 
 * Heavily commented webpack configuration with reasonable defaults.
 * ES6, and ES7 support with babel.
@@ -18,8 +16,6 @@ This workflow serves as a starting point for building Angular 1.x applications u
 * No gulp and no grunt, just npm scripts.
 
 >Warning: Make sure you're using the latest version of Node.js and NPM
-
-[Is Angular 2 Ready Yet?](http://splintercode.github.io/is-angular-2-ready/)
 
 ### Quick start
 
@@ -38,6 +34,7 @@ $ npm install
 # start the server
 $ npm start
 ```
+
 go to [http://localhost:8080](http://localhost:8080) in your browser.
 
 # Table of Contents

@@ -7,7 +7,13 @@ var HtmlWebpackPlugin = require('html-webpack-plugin');
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
 var CopyWebpackPlugin = require('copy-webpack-plugin');
 
-module.exports = function makeWebpackConfig (ENV) {
+/**
+ * Env
+ * Get npm lifecycle event to identify the environment
+ */
+var ENV = process.env.npm_lifecycle_event;
+
+module.exports = function makeWebpackConfig () {
   /**
    * Config
    * Reference: http://webpack.github.io/docs/configuration.html
@@ -37,15 +43,15 @@ module.exports = function makeWebpackConfig (ENV) {
 
     // Output path from the view of the page
     // Uses webpack-dev-server in development
-    publicPath: ENV === 'prod' ? '/' : 'http://localhost:8080/',
+    publicPath: ENV === 'build' ? '/' : 'http://localhost:8080/',
 
     // Filename for entry points
     // Only adds hash in build mode
-    filename: ENV === 'prod' ? '[name].[hash].js' : '[name].bundle.js',
+    filename: ENV === 'build' ? '[name].[hash].js' : '[name].bundle.js',
 
     // Filename for non-entry points
     // Only adds hash in build mode
-    chunkFilename: ENV === 'prod' ? '[name].[hash].js' : '[name].bundle.js'
+    chunkFilename: ENV === 'build' ? '[name].[hash].js' : '[name].bundle.js'
   };
 
   /**
@@ -55,7 +61,7 @@ module.exports = function makeWebpackConfig (ENV) {
    */
   if (ENV === 'test') {
     config.devtool = 'inline-source-map';
-  } else if (ENV === 'prod') {
+  } else if (ENV === 'build') {
     config.devtool = 'source-map';
   } else {
     config.devtool = 'eval-source-map';
@@ -157,12 +163,12 @@ module.exports = function makeWebpackConfig (ENV) {
       // Reference: https://github.com/webpack/extract-text-webpack-plugin
       // Extract css files
       // Disabled when in test mode or not in build mode
-      new ExtractTextPlugin('[name].[hash].css', {disable: ENV !== 'prod'})
+      new ExtractTextPlugin('[name].[hash].css', {disable: ENV !== 'build'})
     )
   }
 
   // Add build specific plugins
-  if (ENV === 'prod') {
+  if (ENV === 'build') {
     config.plugins.push(
       // Reference: http://webpack.github.io/docs/list-of-plugins.html#noerrorsplugin
       // Only emit files when there are no errors
@@ -200,4 +206,4 @@ module.exports = function makeWebpackConfig (ENV) {
   };
 
   return config;
-};
+}();
