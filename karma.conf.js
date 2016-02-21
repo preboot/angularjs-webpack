@@ -49,7 +49,7 @@ module.exports = function karmaConfig (config) {
 
     // Hide webpack build information from output
     webpackMiddleware: {
-      noInfo: true
+      noInfo: 'errors-only'
     }
   });
 };

@@ -197,12 +197,7 @@ module.exports = function makeWebpackConfig () {
    */
   config.devServer = {
     contentBase: './src/public',
-    stats: {
-      modules: false,
-      cached: false,
-      colors: true,
-      chunk: false
-    }
+    stats: 'minimal'
   };
 
   return config;
