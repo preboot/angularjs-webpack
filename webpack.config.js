@@ -130,7 +130,10 @@ module.exports = function makeWebpackConfig () {
         /node_modules/,
         /\.spec\.js$/
       ],
-      loader: 'isparta-loader'
+      loader: 'istanbul-instrumenter',
+      query: {
+        esModules: true
+      }
     })
   }
 
