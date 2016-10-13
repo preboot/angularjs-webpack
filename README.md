@@ -75,7 +75,7 @@ It will start a local server using `webpack-dev-server` which will watch, build 
 ### Build files
 
 * single run: `npm run build`
-* build files and watch: `npm run server`
+* build files and watch: `npm start`
 
 ## Testing
 
