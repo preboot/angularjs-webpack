@@ -29,7 +29,7 @@ module.exports = function makeWebpackConfig() {
    * Should be an empty object if it's generating a test build
    * Karma will set this when it's a test build
    */
-  config.entry = isTest ? {} : {
+  config.entry = isTest ? void 0 : {
     app: './src/app/app.js'
   };
 
@@ -102,7 +102,7 @@ module.exports = function makeWebpackConfig() {
       // Reference: https://github.com/webpack/style-loader
       // Use style-loader in development.
 
-      loader: isTest ? 'null' : ExtractTextPlugin.extract({
+      loader: isTest ? 'null-loader' : ExtractTextPlugin.extract({
         fallbackLoader: 'style-loader',
         loader: [
           {loader: 'css-loader', query: {sourceMap: true}},
@@ -139,7 +139,7 @@ module.exports = function makeWebpackConfig() {
         /node_modules/,
         /\.spec\.js$/
       ],
-      loader: 'istanbul-instrumenter',
+      loader: 'istanbul-instrumenter-loader',
       query: {
         esModules: true
       }
