@@ -20,11 +20,11 @@
   },
   "homepage": "https://github.com/preboot/angularjs-webpack",
   "dependencies": {
-    "angular": "^1.5.0"
+    "angular": "^1.7.0"
   },
   "devDependencies": {
     "ajv": "^6.4.0",
-    "angular-mocks": "^1.5.0",
+    "angular-mocks": "^1.7.0",
     "autoprefixer": "^8.4.1",
     "babel-core": "^6.26.3",
     "babel-loader": "^7.1.4",
